@@ -1,0 +1,54 @@
+<div th:fragment="cabecera">
+	<header>
+		<div id="header_izq">
+			<h1>Ropa Galtzagorri</h1>
+		</div>
+
+		<div id="header_der">
+			<img src="facebook.png" alt="acceso a facebook" width="48px" height="48px">
+			<img src="instagram.png" alt="acceso a instagram" width="48px" height="48px">
+		</div>
+	</header>
+</div>
+
+
+
+
+<div th:fragment="menu">
+	<nav>
+		<ul>
+			<li>
+				<a th:href="@{/MenuMujer}" class="enlace_menu">Mujer</a>
+			</li>
+			<li>
+				<a th:href="@{/MenuHombre}" class="enlace_menu">Hombre</a>
+			</li>
+			<li>
+				<a th:href="@{/MenuInfantil}" class="enlace_menu">Infantil</a>
+			</li>
+		</ul>
+	</nav>
+</div>
+
+
+<div th:fragment="menu_admin">
+	<nav>
+		<ul>
+			<li>
+				<a th:href="@{/MenuAdminRopa}" class="enlace_menu">Ropa</a>
+			</li>
+			<li>
+				<a th:href="@{/MenuAdminCategorias}" class="enlace_menu">Categorias</a>
+			</li>
+			<li>
+				<a th:href="@{/MenuAdminUsuarios}" class="enlace_menu">Usuarios</a>
+			</li>
+		</ul>
+	</nav>
+</div>
+
+<div th:fragment="pie">
+	<footer>
+		<p>Designed by: Ipartek S.C</p>
+	</footer>
+</div>

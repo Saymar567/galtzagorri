@@ -1,0 +1,161 @@
+:root {
+    --alturaCabecera: 120px;
+    --alturaPie: 60px;
+    --alturaMenu:50px;
+    --anchuraElemMenu:200px;
+
+    --paddingGeneral: 10px;
+
+    --sizeFuenteMenu: 22px;
+
+    --colorPrincipal: #BC4749;
+    --colorPrincipalClaro: #eda1a2;
+    --colorPrincipalOscuro: #83282a;
+
+    --colorContraste: #6A994E;
+    --colorContrasteOscuro: #386641;
+    --colorContrasteClaro: #A7C957;
+
+    --fondoClaro: #f6f0f0;
+    --fondoOscuro: #cccbcb;
+
+    --fuenteSerif:"Garamond";
+    --fuenteSans:"Helvetica";
+
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+
+    font-family: var(--fuenteSans);
+}
+
+/* Estilos de la cabecera */
+header {
+    height: var(--alturaCabecera);
+
+    background-color: var(--colorPrincipal);
+    padding: var(--paddingGeneral);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+#header_izq {
+    width: 100%;
+}
+
+
+#header_der {
+    width: 200px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+#header_der img {
+    padding-left: var(--paddingGeneral);
+}
+
+h1 {
+    color: var(--colorPrincipalClaro);
+    font-family: var(--fuenteSerif);
+    font-size: 48px;
+}
+
+
+/*estilos de la barra de menu*/
+
+nav {
+    background-color: var(--colorPrincipalClaro);
+    
+}
+
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+
+nav ul li {
+    list-style: none;
+
+}
+
+
+.enlace_menu {
+    display: inline-block;
+
+    width: var(--anchuraElemMenu);
+    height:var(--alturaMenu);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: var(--sizeFuenteMenu);
+    color: var(--colorPrincipalOscuro);
+}
+
+.enlace_menu:visited{
+    color: var(--colorPrincipalOscuro);
+}
+
+
+.enlace_menu:hover{
+    background-color: var(--colorContraste);
+    color: var(--colorPrincipalOscuro);
+}
+
+
+
+.enlace_menu:active{
+    background-color: var(--colorContrasteOscuro);
+    color: var(--colorContrasteClaro);
+}
+
+/* estilos del cuerpo*/
+main{
+    background-color: var(--fondoOscuro);
+    padding:var(--paddingGeneral);
+    min-height: calc(100vh - (var(--alturaCabecera) + var(--alturaPie) + var(--alturaMenu) + calc(4 * var(--paddingGeneral))));
+}
+
+
+section{
+    background-color: var(--fondoClaro);
+    padding:var(--paddingGeneral);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(40, 36, 36, 0.3);
+}
+
+/*Estilo del pie*/
+footer{
+    background-color: var(--colorPrincipal);
+    height:var(--alturaPie);
+   
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+
+footer p{
+    margin-bottom: var(--paddingGeneral);
+    font-size: 22px;
+    color:var(--colorPrincipalClaro);
+    font-weight: bold;;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+	<title>Galtzagorri</title>
+</head>
+
+<body>
+
+	<div th:include="includes\plantilla.html::cabecera"></div>
+
+	<div th:include="includes\plantilla.html::menu"></div>
+
+	<main>
+		<section>
+			<form method="get" th:action="@{/ComprobarLogin}" th:object="${obj_usuario}">
+
+				<input type="text" id="usu" name="usu" 
+					required placeholder="Usuario" th:field="*{usuario}"><br>
+
+				<input type="text" id="pass" name="pass" 
+					required placeholder="Contraseña" th:field="*{pass}"><br>
+
+				<input type="submit" value="Log-in">
+			</form>
+		</section>
+	</main>
+
+	<div th:include="includes\plantilla.html::pie"></div>
+
+
+
+</body>
+
+</html>

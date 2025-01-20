@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+	<title>Galtzagorri</title>
+</head>
+
+<body>
+
+	<div th:include="includes\plantilla.html::cabecera"></div>
+
+	<div th:include="includes\plantilla.html::menu_admin"></div>
+
+	<main>
+		<section>
+			<form th:action="@{/AdminPrendaGuardar}" method="get" th:object="${obj_prenda}">
+			    <label for="producto">Producto:</label>
+			    <input type="text" id="producto" name="producto" 
+				required th:field="*{prenda}"><br><br>
+			    
+			    <label for="precio">Precio:</label>
+			    <input type="number" id="precio" name="precio" step="0.01" 
+				required th:field="*{precio}"><br><br>
+			    
+			    <label for="foto">Foto:</label>
+			    <input type="text" id="foto" name="foto" 
+				required th:field="*{foto}"><br><br>
+			    
+			    <label for="talla">Talla:</label>
+			    <input type="text" id="talla" name="talla" 
+				required th:field="*{talla}"><br><br>
+			    
+			    <label for="categoria">Categoría:</label>
+			    <select id="categoria" name="categoria" required th:field="*{categ.id}">
+			        <option th:each="elem : ${listaCategorias}" th:value="${elem.id}" th:text="${elem.categoria}"></option>
+			    </select><br><br>
+			    
+			    <input type="submit"></input>
+			</form>
+		</section>
+		
+		
+		<section>
+			
+			<table>
+			        <thead>
+			            <tr>
+			                <th>ID</th>
+			                <th>Foto</th>
+			                <th>Precio</th>
+			                <th>Prenda</th>
+			                <th>Talla</th>
+			                <th>Categoría</th>
+			                <th>Opciones</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			            <!-- Itera sobre los registros de prendas -->
+			            <tr th:each="elem : ${listaPrendas}">
+			                <td th:text="${elem.id}"></td>
+			                <td>
+			                    <!-- Muestra una miniatura de la imagen (si existe) -->
+			                    <img th:src="@{'/imagenes/'+${elem.foto}}"  width="128px" height="128px">
+			                </td>
+			                <td th:text="${elem.precio}"></td>
+			                <td th:text="${elem.prenda}"></td>
+			                <td th:text="${elem.talla}"></td>
+			                <td th:text="${elem.categ.categoria}"></td>
+			                <td>
+			                    <!-- Enlaces para modificar y eliminar -->
+			                    <a th:href="@{/AdminPrendaModificar(id=${elem.id})}">Modificar</a> |
+			                    <a th:href="@{/AdminPrendaBorrar(id=${elem.id})}" onclick="return confirm('¿Estás seguro de que deseas eliminar esta prenda?');">Eliminar</a>
+			                </td>
+			            </tr>
+			        </tbody>
+			    </table>
+		
+		</section>
+	</main>
+
+	<div th:include="includes\plantilla.html::pie"></div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+	<title>Galtzagorri</title>
+</head>
+
+<body>
+
+	<div th:include="includes\plantilla.html::cabecera"></div>
+
+	<div th:include="includes\plantilla.html::menu_admin"></div>
+
+	<main>
+		<section>
+			<form method="get" th:action="@{/AdminUsuariosGuardar}" th:object="${obj_usuario}">
+				<input type="text" id="usu" name="usu" 
+					required placeholder="Usuario" th:field="*{usuario}"><br>
+				
+				<input type="text" id="pass" name="pass" 
+					required placeholder="Contraseña" th:field="*{pass}"><br>
+					
+				<select id="rol_id" name="rol_id" th:field="*{rol.id}">
+					<option th:each="elem : ${listaRoles}" 
+						th:value="${elem.id}" th:text="${elem.rol}"></option>
+				</select>
+				
+				<input type="submit" value="Agregar usuario">
+			</form>
+		</section>
+		
+		
+		<section>
+			<table border="1">
+			  <thead>
+			    <tr>
+			      <th>ID</th>
+			      <th>Usuario</th>
+			      <th>Rol</th>
+			      <th>Opciones</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+				
+			    <tr th:each="elem : ${listaUsuarios}">
+			      <td th:text="${elem.id}"></td>
+			      <td th:text="${elem.usuario}"></td>
+			      <td th:text="${elem.rol.rol}">Administrador</td>
+			      <td>
+			        <a th:href="@{/AdminUsuariosFrmModificar(id=${elem.id})}">Modificar</a> | 
+			        <a th:href="@{/AdminUsuariosBorrar(id=${elem.id})}">Borrar</a>
+			      </td>
+			    </tr>
+			    
+			   
+			  </tbody>
+			</table>
+			
+			
+		</section>
+	</main>
+
+	<div th:include="includes\plantilla.html::pie"></div>
+
+
+
+</body>
+
+</html>
